@@ -4,45 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./index.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" defer></script>
+    <script src="index.js" defer></script>
     <title>pollsight insight</title>
   </head>
-  <canvas id="myChart" style="width:100%;width:700px"></canvas>
   <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script>
-        (async () => {
-            try {
-            const data = await fetch("https://localhost:7070/PollDogAPI")
-            const formatedData = await data.json()
-            const allProducts = formatedData.map((item) => item.product)
-            const brandsRating = formatedData.map((item) => item.average_rating)
-            const barColors= formatedData.map((item) => `rgb(${Math.floor(Math.random() * 255) + 1}, ${Math.floor(Math.random() * 255) + 1}, ${Math.floor(Math.random() * 255) + 1})`)
-            new Chart("myChart", {
-                type: "bar",
-                data: {
-                    labels: allProducts,
-                    datasets: [{
-                        label: 'PollDog Insights',
-                        backgroundColor: barColors,
-                        data: brandsRating
-                    }]
-                },
-                options: {
-                    
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-            } catch (err) {
-                console.log(err)
-            }
-        })()
-        
-    </script>
+    <canvas id="chart"></canvas>
+    <div class="loader-container">
+        <span class="loader"></span>
+    </div>
+    <div class="error-container">
+        <p class="error-p">There was an error while fetching data</p>
+    </div>
   </body>
 </html>

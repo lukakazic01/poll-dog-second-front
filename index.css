@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+canvas {
+    width: 100%;
+}
+
+.error-container {
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.error-p {
+    color: red;
+    font-size: 1.5rem;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid crimson;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
