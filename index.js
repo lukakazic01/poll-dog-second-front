@@ -31,7 +31,7 @@ const barChart = document.getElementById("chart");
         });
         } catch (err) {
             barChart.style.display = 'none';
-            errorContainer.style.visibility = 'visible';
+            errorContainer.style.display = 'flex';
             console.log(err)
         } finally {
             loader.style.display = 'none';
